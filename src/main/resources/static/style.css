@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+input.example {
+	width: 500px;
+	margin-left: 20px;
+	margin-bottom: 10px;
+}
+
+.cp_hr01 {
+	border-width: 1px 0 0 0;
+	border-style: solid;
+	border-color: gray;
+}
+
+input.example:before {
+	content: "：";
+}

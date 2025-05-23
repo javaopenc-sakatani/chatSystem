@@ -5,18 +5,18 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.jdbc.core.JdbcTemplate;
-
+import org.springframework.stereotype.Repository;
+@Repository
 public class Chatdao {
 	private final JdbcTemplate db;
-
-	public Chatdao(JdbcTemplate db) {
+	public Chatdao(JdbcTemplate db){
 		this.db = db;
 	}
 
 	public void insertDb(ChatentForm chatentform) {
-		System.out.println(chatentform.getName1());
-		System.out.println(chatentform.getComment1());
-		db.update("INSERT INTO chat (name,comment) VALUES (?,?)", chatentform.getName1(), chatentform.getComment1());
+		System.out.println(chatentform.getName());
+		System.out.println(chatentform.getComment());
+		db.update("INSERT INTO chat (name,comment) VALUES(?,?)", chatentform.getName(), chatentform.getComment());
 	}
 
 	public List<ChatentForm> searchDb() {
@@ -31,8 +31,8 @@ public class Chatdao {
 			ChatentForm chatentformdb = new ChatentForm();
 			//id、nameのデータをentformdbに移す
 			chatentformdb.setId((int) result1.get("id"));
-			chatentformdb.setName1((String) result1.get("name1"));
-			chatentformdb.setComment1((String)result1.get("comment1"));
+			chatentformdb.setName((String) result1.get("name"));
+			chatentformdb.setComment((String)result1.get("comment"));
 			//移し替えたデータを持ったentformdbを、resultDB2に入れる
 			resultDb2.add(chatentformdb);
 		}
